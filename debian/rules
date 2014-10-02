@@ -1,0 +1,88 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/quilt/quilt.make
+
+configure: configure-stamp
+configure-stamp: $(QUILT_STAMPFN)
+	dh_testdir
+
+	# Fix executable problem
+	find . -type f -exec chmod a-x '{}' \;
+	chmod a+x debian/rules
+
+	qmake-qt4
+
+	touch configure-stamp
+
+build: build-stamp
+build-stamp: configure-stamp
+	dh_testdir
+
+	$(MAKE)
+
+	touch $@
+
+clean: unpatch
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+
+	[ ! -f Makefile ] || $(MAKE) distclean
+	rm -rf debug release
+	rm -f translations/*.qm Makefile.* doc/universalindentgui.1.gz
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+
+	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/universalindentgui install
+
+	mkdir -p $(CURDIR)/debian/universalindentgui/usr/share/pixmaps
+	cp $(CURDIR)/resources/universalIndentGUI_32x32.xpm $(CURDIR)/debian/universalindentgui/usr/share/pixmaps/
+	
+	# Remove shellindent
+	#rm -f debian/universalindentgui/usr/share/universalindentgui/indenters/example.sh	
+	#rm -f debian/universalindentgui/usr/share/universalindentgui/indenters/shellindent.awk
+	#rm -f debian/universalindentgui/usr/share/universalindentgui/indenters/uigui_shellindent.ini
+
+	# Fix lintian warnings
+	find debian -type f -name '*.rb' | xargs chmod a+x
+
+	# Install lintian override
+	install -D -p -m644 debian/universalindentgui.lintian \
+		debian/universalindentgui/usr/share/lintian/overrides/universalindentgui
+
+# Build architecture-independent files here.
+binary-indep: install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs CHANGELOG.txt
+	dh_installdocs
+	dh_installexamples
+	dh_install debian/universalindentgui.desktop usr/share/applications
+	dh_installmenu
+	dh_installman
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_makeshlibs
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

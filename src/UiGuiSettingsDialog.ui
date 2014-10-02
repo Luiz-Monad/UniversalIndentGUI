@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsDialog</class>
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>503</width>
+    <height>336</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Settings</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resources/Icons.qrc">
+    <normaloff>:/mainWindow/preferences-system.png</normaloff>:/mainWindow/preferences-system.png</iconset>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="icon">
+       <iconset resource="../resources/Icons.qrc">
+        <normaloff>:/settingsDialog/applications-system.png</normaloff>:/settingsDialog/applications-system.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Common</string>
+      </attribute>
+      <layout class="QVBoxLayout">
+       <item>
+        <layout class="QHBoxLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="toolTip">
+            <string>Displays all available translations for UniversalIndentGui and lets you choose one.</string>
+           </property>
+           <property name="text">
+            <string>Application language</string>
+           </property>
+           <property name="buddy">
+            <cstring>languageSelectionComboBox</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="languageSelectionComboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Displays all available translations for UniversalIndentGui and lets you choose one.</string>
+           </property>
+           <property name="connectedSettingName" stdset="0">
+            <string notr="true">language</string>
+           </property>
+           <property name="connectedPropertyName" stdset="0">
+            <string notr="true">currentIndex</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="loadLastOpenedFileOnStartupComboBox">
+         <property name="toolTip">
+          <string>If selected opens the source code file on startup that was opened last time.</string>
+         </property>
+         <property name="text">
+          <string>Automatically open last file on startup</string>
+         </property>
+         <property name="connectedSettingName" stdset="0">
+          <string notr="true">loadLastSourceCodeFileOnStartup</string>
+         </property>
+         <property name="connectedPropertyName" stdset="0">
+          <string notr="true">checked</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="enableIndenterParameterTooltipsCheckBox">
+         <property name="toolTip">
+          <string>If checked, tool tips will show up if the mouse cursor remains over an indenter parameter for a while.</string>
+         </property>
+         <property name="text">
+          <string>Enable Parameter Tooltips</string>
+         </property>
+         <property name="connectedSettingName" stdset="0">
+          <string notr="true">indenterParameterTooltipsEnabled</string>
+         </property>
+         <property name="connectedPropertyName" stdset="0">
+          <string notr="true">checked</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <item>
+          <widget class="QLabel" name="labelRecentlyOpenedListSize">
+           <property name="toolTip">
+            <string>Sets how many files should be remembered in the list of recently opened files.</string>
+           </property>
+           <property name="text">
+            <string>Number of files in recently opened list</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="recentlyOpenedListSizeSpinBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Sets how many files should be remembered in the list of recently opened files.</string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>30</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="connectedSettingName" stdset="0">
+            <string notr="true">recentlyOpenedListSize</string>
+           </property>
+           <property name="connectedPropertyName" stdset="0">
+            <string notr="true">value</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="icon">
+       <iconset resource="../resources/Icons.qrc">
+        <normaloff>:/settingsDialog/accessories-text-editor.png</normaloff>:/settingsDialog/accessories-text-editor.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Editor</string>
+      </attribute>
+      <layout class="QVBoxLayout">
+       <item>
+        <widget class="QCheckBox" name="whiteSpaceIsVisibleCheckBox">
+         <property name="toolTip">
+          <string>Enables or disables displaying of white space characters in the editor.</string>
+         </property>
+         <property name="text">
+          <string>Display white space character (tabs, spaces, etc.)</string>
+         </property>
+         <property name="connectedSettingName" stdset="0">
+          <string notr="true">whiteSpaceIsVisible</string>
+         </property>
+         <property name="connectedPropertyName" stdset="0">
+          <string notr="true">checked</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <item>
+          <widget class="QLabel" name="labelTabWidth">
+           <property name="toolTip">
+            <string>Sets width in single spaces used for tabs</string>
+           </property>
+           <property name="statusTip">
+            <string>Defines how many spaces should be displayed in the editor for one tab.</string>
+           </property>
+           <property name="text">
+            <string>Displayed width of tabs</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="tabWidthSpinBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Defines how many spaces should be displayed in the editor for one tab character.</string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>99</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="connectedSettingName" stdset="0">
+            <string notr="true">tabWidth</string>
+           </property>
+           <property name="connectedPropertyName" stdset="0">
+            <string notr="true">value</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="icon">
+       <iconset resource="../resources/Icons.qrc">
+        <normaloff>:/mainWindow/system-software-update.png</normaloff>:/mainWindow/system-software-update.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Network</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QCheckBox" name="checkForUpdateCheckBox">
+         <property name="toolTip">
+          <string>Checks whether a new version of UniversalIndentGUI exists on program start, but only once a day.</string>
+         </property>
+         <property name="text">
+          <string>Check online for update on program start</string>
+         </property>
+         <property name="connectedSettingName" stdset="0">
+          <string notr="true">CheckForUpdate</string>
+         </property>
+         <property name="connectedPropertyName" stdset="0">
+          <string notr="true">checked</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QCheckBox" name="enableProxyCheckBox">
+            <property name="toolTip">
+             <string>If checked, the made proxy settings will be applied for all network connections. Type of the used proxy is SOCKS5.</string>
+            </property>
+            <property name="text">
+             <string>Enable proxy</string>
+            </property>
+            <property name="connectedSettingName" stdset="0">
+             <string notr="true">ProxyEnabled</string>
+            </property>
+            <property name="connectedPropertyName" stdset="0">
+             <string notr="true">checked</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget" native="true">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Host name:</string>
+               </property>
+               <property name="buddy">
+                <cstring>proxyHostNameLineEdit</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="proxyHostNameLineEdit">
+               <property name="toolTip">
+                <string>Host name of the to be used proxy. E.g.: proxy.example.com</string>
+               </property>
+               <property name="connectedSettingName" stdset="0">
+                <string notr="true">ProxyHostName</string>
+               </property>
+               <property name="connectedPropertyName" stdset="0">
+                <string notr="true">text</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Port:</string>
+               </property>
+               <property name="buddy">
+                <cstring>proxyPortSpinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QSpinBox" name="proxyPortSpinBox">
+               <property name="toolTip">
+                <string>Port number to connect to the before named proxy.</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::NoButtons</enum>
+               </property>
+               <property name="maximum">
+                <number>99999</number>
+               </property>
+               <property name="connectedSettingName" stdset="0">
+                <string notr="true">ProxyPort</string>
+               </property>
+               <property name="connectedPropertyName" stdset="0">
+                <string notr="true">text</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>User name:</string>
+               </property>
+               <property name="buddy">
+                <cstring>proxyUserNameLineEdit</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="proxyUserNameLineEdit">
+               <property name="toolTip">
+                <string>If the proxy needs authentification, enter the login name here.</string>
+               </property>
+               <property name="connectedSettingName" stdset="0">
+                <string notr="true">ProxyUserName</string>
+               </property>
+               <property name="connectedPropertyName" stdset="0">
+                <string notr="true">text</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>Password:</string>
+               </property>
+               <property name="buddy">
+                <cstring>proxyPasswordLineEdit</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="proxyPasswordLineEdit">
+               <property name="toolTip">
+                <string>If the proxy needs authentification, enter the password here.</string>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+               <property name="connectedSettingName" stdset="0">
+                <string notr="true">ProxyPassword</string>
+               </property>
+               <property name="connectedPropertyName" stdset="0">
+                <string notr="true">text</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="icon">
+       <iconset resource="../resources/Icons.qrc">
+        <normaloff>:/settingsDialog/syntax-highlight.png</normaloff>:/settingsDialog/syntax-highlight.png</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Syntax Highlighting</string>
+      </attribute>
+      <layout class="QVBoxLayout">
+       <item>
+        <widget class="QCheckBox" name="enableSyntaxHighlightningCheckBox">
+         <property name="toolTip">
+          <string>By enabling special key words of the source code are highlighted.</string>
+         </property>
+         <property name="text">
+          <string>Enable syntax highlighting</string>
+         </property>
+         <property name="connectedSettingName" stdset="0">
+          <string notr="true">SyntaxHighlightingEnabled</string>
+         </property>
+         <property name="connectedPropertyName" stdset="0">
+          <string notr="true">checked</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBoxSyntaxHighlighterProperties">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Lets you make settings for all properties of the available syntax highlighters, like font and color.</string>
+         </property>
+         <property name="title">
+          <string>Highlighter settings</string>
+         </property>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QListWidget" name="listWidget">
+            <property name="currentRow">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="listWidget_2">
+            <property name="currentRow">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout">
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="toolTip">
+               <string>Set the font for the current selected highlighter property.</string>
+              </property>
+              <property name="text">
+               <string>Set Font</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="toolTip">
+               <string>Set the color for the current selected highlighter property.</string>
+              </property>
+              <property name="text">
+               <string>Set Color</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources/Icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>SettingsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>250</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>153</x>
+     <y>236</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>SettingsDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>327</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>282</x>
+     <y>236</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enableProxyCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>widget</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
